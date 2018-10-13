@@ -1,30 +1,4 @@
-<h1>Nuevo Artículo</h1>
-<%= form_with( model: @article, local: true ) do | form | %>
-
-    <% if @article .errors .any? %>
-        <div id="error-explanation">
-            <h2>
-                <%= pluralize( @article .errors .count, "error" ) %> Prohibído guardar este artículo
-            </h2>
-            <ul>
-                <%= @article .errors .full_messages .each do | message | %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-
-    <p>
-        <%= form .label :title %><br />
-        <%= form .text_field :title %>
-    </p>
-    <p>
-        <%= form .label :text %><br />
-        <%= form .text_field :text %>
-    </p>
-    <p>
-        <%= form .submit %>
-    </p>
-<% end %>
+<h1>Editar Artículo</h1>
+<%= render 'form' %>
 <br />
 <%= link_to 'regresar', articles_path %>
