@@ -30,6 +30,12 @@ class ArticlesController < ApplicationController
             render 'edit'                                   # Renderizará la vista con la ruta (o recurso) 'edit' - Volverá al formulario de edición
         end
     end
+    def destroy
+        @article = Article .find( params[ :id ] )
+        @article .destroy                                   # Elimina el registro
+
+        redirect_to articles_path                           # Redirecciona al path '/articles'
+    end
 
     private
     def article_params

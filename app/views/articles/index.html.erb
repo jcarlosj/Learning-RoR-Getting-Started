@@ -17,7 +17,8 @@
             <td><%= article .title %></td>
             <td><%= article .text %></td>
             <td><%= link_to 'mostrar', article_path( article ) %></td>
-            <td><%= link_to 'editar', edit_article_path( article )%></td>
+            <td><%= link_to 'editar', edit_article_path( article ) %></td>
+            <td><%= link_to 'eliminar', article_path( article ), method: :delete, data: { confirm: "¿Desea eliminar el registro?"} %></td>
         </tr>
     <% end %>
 </table>
