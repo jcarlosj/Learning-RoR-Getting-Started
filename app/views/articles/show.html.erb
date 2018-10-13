@@ -1,5 +1,19 @@
 <h1><%= @article .title %></h1>
 <p><%= @article .text %></p>
 <br />
+<h2>Agregar comentarios</h2>
+<%= form_with( model: [ @article, @article . comments .build ], local: true ) do | form | %>
+    <p>
+        <%= form .label :commenter %>
+        <%= form .text_field :commenter %>
+    </p>
+    <p>
+        <%= form .label :body %>
+        <%= form .text_area :body %>
+    </p>
+    <p>
+        <%= form .submit %>
+    </p>
+<% end %>
 <%= link_to 'editar', edit_article_path( @article ) %>
 <%= link_to 'regresar', articles_path %>
