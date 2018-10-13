@@ -2,38 +2,10 @@
 <p><%= @article .text %></p>
 
 <h2>Comentarios</h2>
-<%= @article .comments .each do | comment | %>
-    <p>
-        <strong>Autor:</strong>
-        <%= comment .commenter %>
-    </p>
-    <p>
-        <strong>Comentario:</strong>
-        <%= comment .body %>
-    </p>
-    <p>
-        <%= link_to 'Eliminar',
-            [ comment .article, comment ],
-            method: :delete,
-            data: { confirm: '¿Desea eliminar el comentario?' }
-        %>
-    </p>
-    <hr />
-<% end %>
+<%= render @article .comments %>
 
 <h2>Agregar comentario</h2>
-<%= form_with( model: [ @article, @article .comments .build ], local: true ) do | form | %>
-    <p>
-        <%= form .label :commenter %><br />
-        <%= form .text_field :commenter %>
-    </p>
-    <p>
-        <%= form .label :body %><br />
-        <%= form .text_area :body %>
-    </p>
-    <p>
-        <%= form .submit %>
-    </p>
-<% end %>
+<%= render 'comments/form' %>
+
 <%= link_to 'editar', edit_article_path( @article ) %>
 <%= link_to 'regresar', articles_path %>
