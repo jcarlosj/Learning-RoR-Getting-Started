@@ -1,4 +1,5 @@
 <h1><%= @article .title %></h1>
 <p><%= @article .text %></p>
 <br />
+<%= link_to 'editar', edit_article_path( @article ) %>
 <%= link_to 'regresar', articles_path %>
