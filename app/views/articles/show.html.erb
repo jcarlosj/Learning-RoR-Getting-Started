@@ -1,7 +1,20 @@
 <h1><%= @article .title %></h1>
 <p><%= @article .text %></p>
-<br />
-<h2>Agregar comentarios</h2>
+
+<h2>Comentarios</h2>
+<%= @article .comments .each do | comment | %>
+    <p>
+        <strong>Autor:</strong>
+        <%= comment .commenter %>
+    </p>
+    <p>
+        <strong>Comentario:</strong>
+        <%= comment .body %>
+    </p>
+    <hr />
+<% end %>
+
+<h2>Agregar comentario</h2>
 <%= form_with( model: [ @article, @article . comments .build ], local: true ) do | form | %>
     <p>
         <%= form .label :commenter %>
