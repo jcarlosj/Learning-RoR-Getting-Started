@@ -5,6 +5,13 @@ class CommentsController < ApplicationController
 
         redirect_to article_path( @article )    # Redirecciona al método 'show'
     end
+    def destroy
+        @article = Article .find( params[ :article_id ] )           # Obtiene el articulo con el ID especificado
+        @comment = @article .comments .find( params[ :id ] )        # Obtiene el comentario con el ID especificado del artículo
+        @comment .destroy                                           # Elimina el registro del comentario en la base de datos
+
+        redirect_to article_path( @article )    # Redirecciona al método 'show'
+    end
 
     private
     def comment_params
