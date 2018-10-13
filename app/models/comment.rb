@@ -1,3 +1,4 @@
 class Comment < ApplicationRecord
-  belongs_to :article           # Configura la asociación de registro activo - 'Article'
+    # Asociación (Cardinalidad) con los artículos
+    belongs_to :article           # N a 1: Un comentario pertenece a un artículo
 end
