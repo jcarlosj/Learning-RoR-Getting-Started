@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+
+    # Sistema de autenticación HTTP básica de Rails
+    http_basic_authenticate_with name: "admin", password: "12345", only: :destroy   # Acciones (o métodos) solo para usuarios autenticados
+
     def create
         @article = Article .find( params[ :article_id ] )           # Obtiene el articulo con el ID especificado
         @comment = @article .comments .create( comment_params )     # Crea y guarda el comentario en la base de datos a asociando este con el ID del artículo obtenido

@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+
+    # Sistema de autenticación HTTP básica de Rails
+    http_basic_authenticate_with name: "admin", password: "12345", except: [ :index, :show ]   # Acciones (o métodos) para los que se excluye la autenticación
+
     def index
         @articles = Article .all
     end
